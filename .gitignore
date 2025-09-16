@@ -1,0 +1,6 @@
+.env*
+node_modules/
+*.md
+!README.md
+forntendOrder.txt
+project-struct.txt
