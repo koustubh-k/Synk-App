@@ -2,26 +2,32 @@
 
 This is a full-stack, real-time chat application featuring AI integration and multi-language support. The project is built with a modern MERN stack, separating the backend API from the frontend client for a modular and scalable architecture.
 
-## Project Structure
+---
 
-The repository is organized into three main directories:
+### Project Structure
+
+The repository is organized into two main directories:
 
 -   `server/`: A Node.js and Express.js backend that provides a RESTful API and manages WebSocket connections.
--   `client/`: A Next.js-based frontend application.
 -   `reactClient/`: A Vite + React-based frontend application.
 
-## Features
+---
 
--   **Real-Time Messaging:** Instantaneous message delivery using Socket.IO.
--   **User Authentication:** Secure user registration and login using JSON Web Tokens (JWT).
--   **AI Chat Integration:** An AI-powered chat companion available for interaction (powered by `aiService`).
--   **Message Translation:** On-the-fly translation of messages (powered by `translationService`).
+### Features
+
+-   **Real-Time Messaging:** Instantaneous message delivery using **Socket.IO**.
+-   **User Authentication:** Secure user registration and login using **JSON Web Tokens (JWT)**.
+-   **AI Chat Integration:** An AI-powered chat companion for interaction (powered by `aiService`).
 -   **RESTful API:** A complete API for managing users, chats, and messages.
--   **Modern UI:** A clean and responsive user interface built with React and modern styling tools.
+-   **Modern UI:** A clean and responsive user interface built with **React**, **Tailwind CSS**, and **Shadcn/UI**.
+-   **Scalable Architecture:** Designed to support **1000+ concurrent users** through an event-driven architecture and optimized data synchronization.
+-   **Message Persistence:** Messages are stored in a database for easy retrieval and history.
 
-## Tech Stack
+---
 
-### Backend (`server/`)
+### Tech Stack
+
+#### Backend (`server/`)
 
 -   **Runtime:** Node.js
 -   **Framework:** Express.js
@@ -29,23 +35,25 @@ The repository is organized into three main directories:
 -   **Real-Time Communication:** Socket.IO
 -   **Authentication:** JSON Web Tokens (JWT)
 
-### Frontend (`client/` and `reactClient/`)
+#### Frontend (`reactClient/`)
 
--   **Frameworks:** React with Next.js (`client`) and Vite (`reactClient`)
+-   **Framework:** React with Vite
 -   **Language:** TypeScript
 -   **Styling:** Tailwind CSS, Shadcn/UI
 -   **API Communication:** Axios (or Fetch API)
 -   **State Management:** Zustand (inferred from `store/`)
 
-## Setup and Installation
+---
 
-### Prerequisites
+### Setup and Installation
+
+#### Prerequisites
 
 -   Node.js (v18 or later recommended)
 -   npm or yarn
 -   A running MongoDB instance (local or cloud-based like MongoDB Atlas)
 
-### 1. Backend Setup
+#### 1. Backend Setup
 
 1.  **Navigate to the server directory:**
     ```bash
@@ -77,35 +85,7 @@ The repository is organized into three main directories:
     ```
     The API server should now be running on `http://localhost:5000`.
 
-### 2. Frontend Setup
-
-You can run either the Next.js client or the Vite client.
-
-#### Option A: Next.js (`client/`)
-
-1.  **Navigate to the client directory:**
-    ```bash
-    cd client
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Create a local environment file:**
-    Create a `.env.local` file in the `client` directory and add the backend API URL:
-    ```env
-    NEXT_PUBLIC_API_URL=http://localhost:5000
-    ```
-
-4.  **Start the development server:**
-    ```bash
-    npm run dev
-    ```
-    The application should be accessible at `http://localhost:3000`.
-
-#### Option B: Vite + React (`reactClient/`)
+#### 2. Frontend Setup
 
 1.  **Navigate to the reactClient directory:**
     ```bash
