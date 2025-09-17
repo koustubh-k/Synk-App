@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import type { ChangeEvent, FormEvent } from "react";
+import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
 import { userApi } from "@/api/userApi";
 import useAuthStore from "@/store/authStore";
 

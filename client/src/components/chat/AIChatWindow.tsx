@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { chatApi } from "@/api/chatApi";
 import useAuthStore from "@/store/authStore";
 import { Loader2, Bot } from "lucide-react";

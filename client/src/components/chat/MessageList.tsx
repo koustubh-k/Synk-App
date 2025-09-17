@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, forwardRef } from "react";
+import { useRef, useEffect } from "react";
 import useAuthStore from "@/store/authStore";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
@@ -23,8 +23,7 @@ interface MessageListProps {
   messages: Message[];
 }
 
-const MessageList = forwardRef<HTMLDivElement, MessageListProps>(
-  ({ messages }, ref) => {
+const MessageList = ({ messages }: MessageListProps) => {
     const user = useAuthStore((state) => state.user);
     const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -84,7 +83,6 @@ const MessageList = forwardRef<HTMLDivElement, MessageListProps>(
       </ScrollArea>
     );
   }
-);
 
 MessageList.displayName = "MessageList";
 

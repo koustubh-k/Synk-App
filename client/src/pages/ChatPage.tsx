@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 import { useSocket } from "../hooks/useSocket";
@@ -7,29 +7,7 @@ import Sidebar from "@/components/common/Sidebar";
 import ChatWindow from "@/components/chat/ChatWindow";
 import AIChatWindow from "@/components/chat/AIChatWindow";
 import ThemeToggle from "@/components/common/ThemeToggle";
-
-// Define the types for chat and message data
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  avatar?: string;
-}
-
-interface Message {
-  _id: string;
-  sender: User;
-  content: string;
-  createdAt: string;
-}
-
-interface Chat {
-  _id: string;
-  chatName: string;
-  isGroupChat: boolean;
-  users: User[];
-  latestMessage: Message;
-}
+import type { Chat, User } from "@/types";
 
 const ChatPage = () => {
   const { isAuthenticated } = useAuthStore();

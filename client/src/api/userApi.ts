@@ -35,10 +35,10 @@ interface User {
 }
 
 // Define the type for upload avatar response
-interface UploadAvatarResponse {
-  message: string;
-  avatar: string;
-}
+// interface UploadAvatarResponse {
+//   message: string;
+//   avatar: string;
+// }
 
 /**
  * @desc Fetches a list of all users.

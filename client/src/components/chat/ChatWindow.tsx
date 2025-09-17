@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSocket } from "@/hooks/useSocket";
 import { chatApi } from "@/api/chatApi";
 import useAuthStore from "@/store/authStore";
@@ -7,31 +7,7 @@ import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-// Define types for chat and message data
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  avatar?: string;
-}
-
-interface Chat {
-  _id: string;
-  chatName: string;
-  isGroupChat: boolean;
-  users: User[];
-  latestMessage: Message;
-}
-
-interface Message {
-  _id: string;
-  sender: User;
-  content: string;
-  chat: Chat;
-  createdAt: string;
-  mediaUrl?: string;
-}
+import type { Chat, Message } from "@/types";
 
 interface ChatWindowProps {
   selectedChat: Chat;

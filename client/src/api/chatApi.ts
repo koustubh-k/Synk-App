@@ -1,32 +1,8 @@
 import axios from "axios";
 import useAuthStore from "@/store/authStore";
+import type { Message, Chat } from "@/types";
 
 const API_URL = import.meta.env.VITE_API_URL;
-
-// Define interfaces for chat and message data
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  avatar?: string;
-}
-
-interface Message {
-  _id: string;
-  sender: User;
-  content: string;
-  chat: Chat;
-  createdAt: string;
-  mediaUrl?: string;
-}
-
-interface Chat {
-  _id: string;
-  isGroupChat: boolean;
-  chatName: string;
-  users: User[];
-  latestMessage: Message;
-}
 
 // Create an axios instance with a base URL
 const api = axios.create({
@@ -58,8 +34,11 @@ const fetchChats = async (): Promise<Chat[]> => {
   try {
     const response = await api.get("/chats");
     return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || "Failed to fetch chats");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Failed to fetch chats");
   }
 };
 
@@ -72,8 +51,11 @@ const accessChat = async (userId: string): Promise<Chat> => {
   try {
     const response = await api.post("/chats", { userId });
     return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || "Failed to access chat");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Failed to access chat");
   }
 };
 
@@ -86,10 +68,11 @@ const fetchMessages = async (chatId: string): Promise<Message[]> => {
   try {
     const response = await api.get(`/chats/message/${chatId}`);
     return response.data;
-  } catch (error: any) {
-    throw new Error(
-      error.response?.data?.message || "Failed to fetch messages"
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Failed to fetch messages");
   }
 };
 
@@ -106,8 +89,11 @@ const sendMessage = async (
   try {
     const response = await api.post("/chats/message", { chatId, content });
     return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || "Failed to send message");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Failed to send message");
   }
 };
 
@@ -120,10 +106,11 @@ const sendAIMessage = async (message: string): Promise<string> => {
   try {
     const response = await api.post("/chats/ai/message", { message });
     return response.data.content;
-  } catch (error: any) {
-    throw new Error(
-      error.response?.data?.message || "Failed to get AI response"
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Failed to get AI response");
   }
 };
 

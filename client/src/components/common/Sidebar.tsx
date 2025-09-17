@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAuthStore from "@/store/authStore";
 import { chatApi } from "@/api/chatApi";
 import { userApi } from "@/api/userApi";
@@ -10,32 +10,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
-
-// Define types for chat and user data
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  avatar?: string;
-}
-
-interface Message {
-  _id: string;
-  sender: User;
-  content: string;
-  createdAt: string;
-}
-
-interface Chat {
-  _id: string;
-  chatName: string;
-  isGroupChat: boolean;
-  users: User[];
-  latestMessage?: Message;
-}
+import type { User, Chat } from "@/types";
 
 interface SidebarProps {
-  onChatSelect: (chat: Chat) => void;
+  onChatSelect: (chat: Chat | null) => void;
   selectedChat: Chat | null;
 }
 
@@ -139,6 +117,12 @@ const Sidebar = ({ onChatSelect, selectedChat }: SidebarProps) => {
               sender: { _id: "", username: "", email: "" },
               content: "",
               createdAt: "",
+              chat: {
+                _id: "ai",
+                isGroupChat: false,
+                chatName: "AI Chat",
+                users: [],
+              },
             },
           })
         }
