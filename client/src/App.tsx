@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,7 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import useAuthStore from "./store/authStore";
 
 // A component that protects routes
-const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthStore();
 
   return isAuthenticated ? children : <Navigate to="/" replace />;
