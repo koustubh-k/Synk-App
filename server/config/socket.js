@@ -14,7 +14,10 @@ const setupSocket = (server) => {
   const io = new Server(server, {
     pingTimeout: 60000,
     cors: {
-      origin: process.env.CLIENT_URL,
+      origin: [
+        process.env.CLIENT_URL || "http://localhost:5173",
+        "https://synk-chat-app.vercel.app",
+      ],
       credentials: true,
       methods: ["GET", "POST"],
       allowedHeaders: ["Content-Type", "Authorization"],

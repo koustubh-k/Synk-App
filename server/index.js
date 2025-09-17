@@ -29,6 +29,7 @@ const corsOptions = {
   origin: [
     process.env.CLIENT_URL || "http://localhost:5173",
     "https://synk-chat-app.vercel.app",
+    "https://synk-5pnl8qx3y-koustubh-ks-projects.vercel.app",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
