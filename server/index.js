@@ -24,16 +24,13 @@ connectDB();
 app.use(morgan("dev"));
 app.use(express.json()); // To accept JSON data
 
-// CORS configuration for Express
 const corsOptions = {
-  origin: [
-    process.env.CLIENT_URL || "http://localhost:5173",
-    "https://synk-chat-app.vercel.app",
-    "https://synk-5pnl8qx3y-koustubh-ks-projects.vercel.app",
-  ],
+  origin: [process.env.CLIENT_URL || "http://localhost:5173"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 204,
+  preflightContinue: false,
 };
 app.use(cors(corsOptions));
 

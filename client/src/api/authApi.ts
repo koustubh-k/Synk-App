@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
 
 // Define the types for the API responses and request payloads
 interface AuthResponse {
@@ -27,6 +27,7 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
 
 /**
@@ -40,8 +41,11 @@ const registerUser = async (
   try {
     const response = await api.post("/auth/register", payload);
     return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || "Registration failed");
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error) && error.response) {
+      throw new Error(error.response.data?.message || "Registration failed");
+    }
+    throw new Error("Registration failed");
   }
 };
 
@@ -54,8 +58,11 @@ const loginUser = async (payload: LoginPayload): Promise<AuthResponse> => {
   try {
     const response = await api.post("/auth/login", payload);
     return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || "Login failed");
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error) && error.response) {
+      throw new Error(error.response.data?.message || "Login failed");
+    }
+    throw new Error("Login failed");
   }
 };
 
