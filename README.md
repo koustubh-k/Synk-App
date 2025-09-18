@@ -1,4 +1,4 @@
-# Advanced Chat Application
+# SYNK-APP Advanced Chat Application
 
 This is a full-stack, real-time chat application featuring AI integration and multi-language support. The project is built with a modern MERN stack, separating the backend API from the frontend client for a modular and scalable architecture.
 
