@@ -3,7 +3,7 @@
 This is a full-stack, real-time chat application featuring AI integration and multi-language support. The project is built with a modern MERN stack, separating the backend API from the frontend client for a modular and scalable architecture.
 
 ---
-
+Visit:https://synk-app-wine.vercel.app/
 ### Project Structure
 
 The repository is organized into two main directories:
